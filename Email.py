@@ -11,7 +11,7 @@ app = Flask(__name__)
 # Replace with your credentials
 sender_email = ///
 sender_password = ///
-# recipient_email = "abdalazizshtia@gmail.com"
+# recipient_email = "///"
 
 
 @app.route("/")
