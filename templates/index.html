@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Send Email with Attachment</h1>
+        <form id="email-form" action="/send_email" method="post" enctype="multipart/form-data">
+            <label for="recipient_email">Recipient Email:</label>
+            <input type="email" id="recipient_email" name="recipient_email" required><br>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required><br>
+            <label for="body">Body:</label>
+            <textarea id="body" name="body" required></textarea><br>
+            <label for="file">File:</label>
+            <input type="file" id="file" name="file" required  ><br>
+            <input type="submit" value="Send Email">
+        </form>
+        <div id="success-message"></div>
+    </div>
+    <script>
+        document.getElementById('email-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = this;
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', form.getAttribute('action'), true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById('success-message').innerText = 'Email sent successfully.';
+                    document.getElementById('success-message').style.display = 'block';
+                    form.reset();
+                    setTimeout(function() {
+                        document.getElementById('success-message').style.display = 'none';
+                    }, 5000);
+                }
+            };
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>
