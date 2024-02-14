@@ -9,8 +9,8 @@ from email.mime.text import MIMEText
 app = Flask(__name__)
 
 # Replace with your credentials
-sender_email = "abdalazizly97@gmail.com"
-sender_password = "dqzk grjv tafb cjmx"
+sender_email = ///
+sender_password = ///
 # recipient_email = "abdalazizshtia@gmail.com"
 
 
